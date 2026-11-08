@@ -1,0 +1,8 @@
+.DS_Store
+backend/.venv/
+backend/storage/
+__pycache__/
+.pytest_cache/
+/data/**/*.csv
+/analysis/
+/docs/
