@@ -57,7 +57,7 @@ curl 'http://127.0.0.1:8000/api/visits/trend?granularity=month&sex=F'
 - 방문 변화는 관측일 평균이 ±20% 이상 달라질 때 제안합니다. 직전 동일 길이 기간을 우선하며 양쪽 날짜의 80% 이상 관측이 필요합니다. 비교가 불가능하면 선택 범위 안의 최근 연속 6개 완전월을 앞/뒤 3개월로 나누고 해당 날짜를 명시합니다. 기존 KPI의 직전 동일 기간 합계 비교와 별도 지표입니다.
 - 시설 연계는 SECD 최대 상대 비중 ≥50%, 양수 관측 ≥3개월, 특정 한 달 집중 ≤60%일 때 제안합니다. 기준 역할에 자료가 없을 때만 상대 역할로 별도 조회합니다. 역할을 합산하지 않습니다. 비중은 같은 역할의 시설 쌍 집계 합을 분모로 하며 FST를 사용하지 않습니다. 월 전체 집계 범위를 명시합니다.
 - `facility_profile`에 측정값, `strategy_diagnostics`에 7개 규칙의 제안/보류 이유, `strategy_rule_version`에 버전을 제공합니다. `strategies[].chart`에는 `hours`, `period`, `day_types`, `monthly`, `relations` 유형과 근거를 담습니다. 자료 부족과 충분히 관측됐지만 기준을 넘지 않은 경우를 구분합니다.
-- 전체 17개 시설의 재현 가능한 분석은 개발 의존성 설치 후 `cd backend`에서 `.venv/bin/python -m app.profile_facilities`로 생성합니다. [시설별 상세 보고서](../analysis/facility_strategy_review.md)와 [측정값 JSON](../analysis/facility_profiles.json)에 원본 SHA-256, 전체 기간의 지표·전략·보류 이유를 보관합니다. 화면의 기간·관객 필터를 바꾸면 해당 조건으로 다시 계산하므로 보고서와 달라질 수 있습니다.
+- 필요하면 개발 의존성 설치 후 `cd backend`에서 `.venv/bin/python -m app.profile_facilities`로 전체 17개 시설의 분석 보고서를 생성할 수 있습니다. 이 선택적 도구는 `analysis/` 폴더를 만들고 `facility_strategy_review.md`와 `facility_profiles.json`을 저장합니다. 생성물은 Git에서 제외되며 프로그램 실행에 필요하지 않습니다. 화면의 기간·관객 필터를 바꾸면 해당 조건으로 다시 계산하므로 보고서와 달라질 수 있습니다.
 - 실제 인증은 없습니다. 개발용 로컬 주소에 바인딩합니다.
 
 ## 검증
